@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: ppt-generator-api
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn vitraga_ppt_generator.wsgi --log-file -
+    envVars:
+      - key: OPENAI_API_KEY
+        value: sk-xxxxxx-your-key
+      - key: DJANGO_SECRET_KEY
+        generateValue: true
+      - key: PYTHON_VERSION
+        value: 3.12.0
